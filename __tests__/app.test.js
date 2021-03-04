@@ -21,7 +21,7 @@ describe('GISAENGCHUNG-BE routes', () => {
 
   it('/POST signup', async() => {
     const res = await request(app)
-      .post('/api/v1/auth/signup') //setup post route
+      .post('/api/v1/auth/signup')
       .send({
         email: 'test2@test.com',
         password: 'password',
