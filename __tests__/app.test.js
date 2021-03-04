@@ -10,8 +10,16 @@ describe('GISAENGCHUNG-BE routes', () => {
   beforeEach(async() => {
     await pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
     return user = await UserService.create({
-      email: 'test@test.com',
+      email: 'sydney@richard.kT',
       password: 'password',
+      firstName: 'kevin',
+      lastName: 'fiero',
+      userRole: 'Movie Goer',
+      tagline: 'here is the tagline',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: '@allthoselimes',
+      userState: 'OR',
+      userCity: 'Portland'
     });
   });
 
@@ -23,13 +31,29 @@ describe('GISAENGCHUNG-BE routes', () => {
     const res = await request(app)
       .post('/api/v1/auth/signup')
       .send({
-        email: 'test2@test.com',
+        email: 'sydney@richard.kT',
         password: 'password',
+        firstName: 'kevin',
+        lastName: 'fiero',
+        userRole: 'Movie Goer',
+        tagline: 'here is the tagline',
+        profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+        paymentHandle: '@allthoselimes',
+        userState: 'OR',
+        userCity: 'Portland'
       });
 
     expect(res.body).toEqual({
       userId: expect.any(String),
-      email: 'test2@test.com',
+      email: 'sydney@richard.kT',
+      firstName: 'kevin',
+      lastName: 'fiero',
+      userRole: 'Movie Goer',
+      tagline: 'here is the tagline',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: '@allthoselimes',
+      userState: 'OR',
+      userCity: 'Portland'
     });
   });
 
@@ -37,13 +61,21 @@ describe('GISAENGCHUNG-BE routes', () => {
     const res = await request(app)
       .post('/api/v1/auth/login')
       .send({
-        email: 'test@test.com',
-        password: 'password'
+        email: 'sydney@richard.kT',
+        password: 'password',
       });
 
     expect(res.body).toEqual({
       userId: user.userId,
-      email: 'test@test.com',
+      email: 'sydney@richard.kT',
+      firstName: 'kevin',
+      lastName: 'fiero',
+      userRole: 'Movie Goer',
+      tagline: 'here is the tagline',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: '@allthoselimes',
+      userState: 'OR',
+      userCity: 'Portland'
     });
   });
 
@@ -53,7 +85,7 @@ describe('GISAENGCHUNG-BE routes', () => {
     await agent
       .post('/api/v1/auth/login')
       .send({
-        email: 'test@test.com',
+        email: 'sydney@richard.kT',
         password: 'password'
       });
 
@@ -62,7 +94,15 @@ describe('GISAENGCHUNG-BE routes', () => {
 
     expect(res.body).toEqual({
       userId: user.userId,
-      email: 'test@test.com',
+      email: 'sydney@richard.kT',
+      firstName: 'kevin',
+      lastName: 'fiero',
+      tagline: 'here is the tagline',
+      userRole: 'Movie Goer',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: '@allthoselimes',
+      userState: 'OR',
+      userCity: 'Portland'
     });
   });
 });
