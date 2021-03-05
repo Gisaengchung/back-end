@@ -8,6 +8,11 @@ const statesList = require('../testData/test-data');
 let user;
 
 describe('GISAENGCHUNG-BE routes', () => {
+  beforeAll(async() => {
+    await pool.query(fs.readFileSync('./sql/states.sql', 'utf-8'));
+
+  });
+
   beforeEach(async() => {
     await pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
     return user = await UserService.create({
@@ -180,8 +185,6 @@ describe('GISAENGCHUNG-BE routes', () => {
     
     const res = await agent 
       .get('/api/v1/state');
-
-    //console.log(res.body);
 
     expect(res.body).toEqual(statesList);
   });
