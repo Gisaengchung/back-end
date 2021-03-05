@@ -3,14 +3,16 @@ const pool = require('../lib/utils/pool');
 const request = require('supertest');
 const app = require('../lib/app');
 const UserService = require('../lib/services/UserService.js');
-const statesList = require('../testData/test-data');
+const statesList = require('../testData/state');
+const genreList = require('../testData/genre');
+
 
 let user;
 
 describe('GISAENGCHUNG-BE routes', () => {
   beforeAll(async() => {
     await pool.query(fs.readFileSync('./sql/states.sql', 'utf-8'));
-
+    await pool.query(fs.readFileSync('./sql/genres.sql', 'utf-8'));
   });
 
   beforeEach(async() => {
@@ -187,6 +189,17 @@ describe('GISAENGCHUNG-BE routes', () => {
       .get('/api/v1/state');
 
     expect(res.body).toEqual(statesList);
+  });
+
+  it('/GET all genres', async() => {
+    const agent = request.agent(app);
+    
+    const res = await agent 
+      .get('/api/v1/genre');
+
+      console.log(res.body);
+
+    expect(res.body).toEqual(genreList);
   });
 
 });
