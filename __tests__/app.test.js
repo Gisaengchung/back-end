@@ -82,14 +82,12 @@ describe('GISAENGCHUNG-BE routes', () => {
   it('/GET verify', async() => {
     const agent = request.agent(app);
     
-    const a = await agent
+    await agent
       .post('/api/v1/auth/login')
       .send({
         email: 'sydney@richard.kT',
         password: 'password'
       });
-
-      console.log(a.body);
 
     const res = await agent 
       .get('/api/v1/auth/verify');
@@ -137,5 +135,43 @@ describe('GISAENGCHUNG-BE routes', () => {
   });
 
 
+  it('/PUT by user id', async() => {
+    const agent = request.agent(app);
+
+    await agent
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'sydney@richard.kT',
+        password: 'password',
+      });
+    
+    const res = await agent 
+      .put('/api/v1/user')
+      .send({
+        userId: user.userId,
+        email: 'sydney@richard.kT',
+        firstName: 'kevdog',
+        lastName: 'fiero',
+        tagline: 'here is the BETTER tagline',
+        userRole: 'Director',
+        profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+        paymentHandle: '@allthoselimes',
+        userState: 'MI',
+        userCity: 'Ann Arbor'
+      });
+
+    expect(res.body).toEqual({
+      userId: user.userId,
+      email: 'sydney@richard.kT',
+      firstName: 'kevdog',
+      lastName: 'fiero',
+      tagline: 'here is the BETTER tagline',
+      userRole: 'Director',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: '@allthoselimes',
+      userState: 'MI',
+      userCity: 'Ann Arbor'
+    });
+  });
 
 });
