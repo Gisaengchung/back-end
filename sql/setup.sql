@@ -10,7 +10,7 @@
 --   user_role VARCHAR(50),
 --   profile_image_url VARCHAR(512) NOT NULL,
 --   payment_handle VARCHAR(50),
---   user_state VARCHAR(2) NOT NULL,
+--   user_state VARCHAR(20) NOT NULL,
 --   user_city VARCHAR(50) NOT NULL
 -- );
 
@@ -27,6 +27,6 @@ CREATE TABLE users (
   user_role VARCHAR(50),
   profile_image_url VARCHAR(512),
   payment_handle VARCHAR(50),
-  user_state VARCHAR(2),
+  user_state VARCHAR(20),
   user_city VARCHAR(50)
 );
