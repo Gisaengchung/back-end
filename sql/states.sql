@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS states CASCADE;
 
 CREATE TABLE states (
   state_id SERIAL PRIMARY KEY,
-  state_code VARCHAR(2) NOT NULL,
-  state_name VARCHAR(15) NOT NULL
+  state_code TEXT NOT NULL,
+  state_name TEXT NOT NULL
 );
 
 INSERT INTO states (state_code, state_name) VALUES ('AL','Alabama');

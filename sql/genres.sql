@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS genres CASCADE;
 
 CREATE TABLE genres (
   genre_id SERIAL PRIMARY KEY,
-  genre VARCHAR(256) NOT NULL
+  genre TEXT NOT NULL
 );
 
 INSERT INTO genres (genre) VALUES ('Action');

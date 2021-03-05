@@ -3,6 +3,7 @@ const pool = require('../lib/utils/pool');
 const request = require('supertest');
 const app = require('../lib/app');
 const UserService = require('../lib/services/UserService.js');
+const statesList = require('../testData/test-data');
 
 let user;
 
@@ -172,6 +173,17 @@ describe('GISAENGCHUNG-BE routes', () => {
       userState: 'MI',
       userCity: 'Ann Arbor'
     });
+  });
+
+  it('/GET all states', async() => {
+    const agent = request.agent(app);
+    
+    const res = await agent 
+      .get('/api/v1/state');
+
+    //console.log(res.body);
+
+    expect(res.body).toEqual(statesList);
   });
 
 });
