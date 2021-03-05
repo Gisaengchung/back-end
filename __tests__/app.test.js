@@ -82,12 +82,14 @@ describe('GISAENGCHUNG-BE routes', () => {
   it('/GET verify', async() => {
     const agent = request.agent(app);
     
-    await agent
+    const a = await agent
       .post('/api/v1/auth/login')
       .send({
         email: 'sydney@richard.kT',
         password: 'password'
       });
+
+      console.log(a.body);
 
     const res = await agent 
       .get('/api/v1/auth/verify');
@@ -105,4 +107,35 @@ describe('GISAENGCHUNG-BE routes', () => {
       userCity: 'Portland'
     });
   });
+
+
+  it('/GET user by id', async() => {
+    const agent = request.agent(app);
+
+    await agent
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'sydney@richard.kT',
+        password: 'password',
+      });
+    
+    const res = await agent 
+      .get('/api/v1/user/1');
+
+    expect(res.body).toEqual({
+      userId: user.userId,
+      email: 'sydney@richard.kT',
+      firstName: 'kevin',
+      lastName: 'fiero',
+      tagline: 'here is the tagline',
+      userRole: 'Movie Goer',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: '@allthoselimes',
+      userState: 'OR',
+      userCity: 'Portland'
+    });
+  });
+
+
+
 });
