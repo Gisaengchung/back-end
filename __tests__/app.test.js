@@ -141,8 +141,7 @@ describe('GISAENGCHUNG-BE routes', () => {
         password: 'password',
       });
     
-    const res = await agent 
-      .get('/api/v1/user/1');
+    const res = await agent.get('/api/v1/user/1');
 
     expect(res.body).toEqual({
       userId: user.userId,
@@ -161,7 +160,7 @@ describe('GISAENGCHUNG-BE routes', () => {
   it('/GET all users', async() => {
     const agent = request.agent(app);
 
-    await UserService.create({
+    const a = await UserService.create({
       email: 'kevin@sydney.kT',
       password: 'anotherpassword',
       firstName: 'richard',
@@ -174,12 +173,11 @@ describe('GISAENGCHUNG-BE routes', () => {
       userCity: 'Ann Arbor'
     });
 
-    await agent.get('/api/v1/user/');
-    
-    const res = await agent 
-      .get('/api/v1/user/1');
+    console.log(a)
 
-    expect(res.body).toEqual({
+    const res = await agent.get('/api/v1/user');
+    
+    expect(res.body).toEqual([{
       userId: '1',
       email: 'sydney@richard.kT',
       firstName: 'kevin',
@@ -194,7 +192,6 @@ describe('GISAENGCHUNG-BE routes', () => {
     {
       userId: '2',
       email: 'kevin@sydney.kT',
-      password: 'anotherpassword',
       firstName: 'richard',
       lastName: 'hillman',
       userRole: 'director',
@@ -203,7 +200,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       paymentHandle: 'aaa@allthoselimes',
       userState: 'MI',
       userCity: 'Ann Arbor'
-    });
+    }]);
   });
 
 
@@ -304,6 +301,55 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None'
     });
+  });
+
+  it('/GET all projects', async() => {
+    const agent = request.agent(app);
+
+    await Project.insert({
+      projectTitle: 'Richards Toe Hair',
+      projectSubtitle: 'Smell',
+      projectDescription: 'This is about Richards toes',
+      projectGenre: 'Romance',
+      projectLocState: 'OR',
+      projectLocCity: 'Talent',
+      projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
+      projectFundingGoal: '$100',
+      projectFundingExDate: '3/31/2021',
+      projectRiskChallenge: 'The smell',
+      projectDiversity: 'None'
+    });
+
+    const res = await agent.get('/api/v1/project/');
+
+    expect(res.body).toEqual([{
+      projectId: '1',
+      projectTitle: 'Richards Toes',
+      projectSubtitle: 'Smell',
+      projectDescription: 'This is about Richards toes',
+      projectGenre: 'Romance',
+      projectLocState: 'OR',
+      projectLocCity: 'Talent',
+      projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
+      projectFundingGoal: '$100',
+      projectFundingExDate: '3/31/2021',
+      projectRiskChallenge: 'The smell',
+      projectDiversity: 'None'
+    },
+    {
+      projectId: '2',
+      projectTitle: 'Richards Toe Hair',
+      projectSubtitle: 'Smell',
+      projectDescription: 'This is about Richards toes',
+      projectGenre: 'Romance',
+      projectLocState: 'OR',
+      projectLocCity: 'Talent',
+      projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
+      projectFundingGoal: '$100',
+      projectFundingExDate: '3/31/2021',
+      projectRiskChallenge: 'The smell',
+      projectDiversity: 'None'
+    }]);
   });
 
 });
