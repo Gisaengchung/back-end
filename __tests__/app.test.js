@@ -158,6 +158,54 @@ describe('GISAENGCHUNG-BE routes', () => {
     });
   });
 
+  it('/GET all users', async() => {
+    const agent = request.agent(app);
+
+    await UserService.create({
+      email: 'kevin@sydney.kT',
+      password: 'anotherpassword',
+      firstName: 'richard',
+      lastName: 'hillman',
+      userRole: 'director',
+      tagline: 'aaahere is the tagline',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: 'aaa@allthoselimes',
+      userState: 'MI',
+      userCity: 'Ann Arbor'
+    });
+
+    await agent.get('/api/v1/user/');
+    
+    const res = await agent 
+      .get('/api/v1/user/1');
+
+    expect(res.body).toEqual({
+      userId: '1',
+      email: 'sydney@richard.kT',
+      firstName: 'kevin',
+      lastName: 'fiero',
+      tagline: 'here is the tagline',
+      userRole: 'Movie Goer',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: '@allthoselimes',
+      userState: 'OR',
+      userCity: 'Portland'
+    },
+    {
+      userId: '2',
+      email: 'kevin@sydney.kT',
+      password: 'anotherpassword',
+      firstName: 'richard',
+      lastName: 'hillman',
+      userRole: 'director',
+      tagline: 'aaahere is the tagline',
+      profileImageUrl: 'https://cdn.searchenginejournal.com/wp-content/uploads/2019/08/c573bf41-6a7c-4927-845c-4ca0260aad6b-760x400.jpeg',
+      paymentHandle: 'aaa@allthoselimes',
+      userState: 'MI',
+      userCity: 'Ann Arbor'
+    });
+  });
+
 
   it('/PUT by user id', async() => {
     const agent = request.agent(app);
