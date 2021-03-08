@@ -12,5 +12,7 @@ CREATE TABLE projects (
   funding_goal TEXT, 
   funding_ex_date TEXT, 
   risk_challenge TEXT,
-  diversity TEXT
+  diversity TEXT,
+  user_id SERIAL,
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );

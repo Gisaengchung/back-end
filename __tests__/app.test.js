@@ -20,20 +20,8 @@ describe('GISAENGCHUNG-BE routes', () => {
   beforeEach(async() => {
     await pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
     await pool.query(fs.readFileSync('./sql/projects.sql', 'utf-8'));
-    project = await Project.insert({
-      projectTitle: 'Richards Toes',
-      projectSubtitle: 'Smell',
-      projectDescription: 'This is about Richards toes',
-      projectGenre: 'Romance',
-      projectLocState: 'OR',
-      projectLocCity: 'Talent',
-      projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-      projectFundingGoal: '$100',
-      projectFundingExDate: '3/31/2021',
-      projectRiskChallenge: 'The smell',
-      projectDiversity: 'None'
-    });
-    return user = await UserService.create({
+
+    user = await UserService.create({
       email: 'sydney@richard.kT',
       password: 'password',
       firstName: 'kevin',
@@ -44,6 +32,20 @@ describe('GISAENGCHUNG-BE routes', () => {
       paymentHandle: '@allthoselimes',
       userState: 'OR',
       userCity: 'Portland'
+    });
+    return project = await Project.insert({
+      projectTitle: 'Richards Toes',
+      projectSubtitle: 'Smell',
+      projectDescription: 'This is about Richards toes',
+      projectGenre: 'Romance',
+      projectLocState: 'OR',
+      projectLocCity: 'Talent',
+      projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
+      projectFundingGoal: '$100',
+      projectFundingExDate: '3/31/2021',
+      projectRiskChallenge: 'The smell',
+      projectDiversity: 'None',
+      userId: '1'
     });
   });
 
@@ -173,8 +175,6 @@ describe('GISAENGCHUNG-BE routes', () => {
       userCity: 'Ann Arbor'
     });
 
-    console.log(a)
-
     const res = await agent.get('/api/v1/user');
     
     expect(res.body).toEqual([{
@@ -284,7 +284,8 @@ describe('GISAENGCHUNG-BE routes', () => {
         projectFundingGoal: '$100',
         projectFundingExDate: '3/31/2021',
         projectRiskChallenge: 'The smell',
-        projectDiversity: 'None'
+        projectDiversity: 'None',
+        userId: '1'
       });
 
     expect(res.body).toEqual({
@@ -299,7 +300,8 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectFundingGoal: '$100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
-      projectDiversity: 'None'
+      projectDiversity: 'None',
+      userId: '1'
     });
   });
 
@@ -317,7 +319,8 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectFundingGoal: '$100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
-      projectDiversity: 'None'
+      projectDiversity: 'None',
+      userId: '1'
     });
 
     const res = await agent.get('/api/v1/project/');
@@ -334,7 +337,8 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectFundingGoal: '$100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
-      projectDiversity: 'None'
+      projectDiversity: 'None',
+      userId: '1'
     },
     {
       projectId: '2',
@@ -348,7 +352,8 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectFundingGoal: '$100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
-      projectDiversity: 'None'
+      projectDiversity: 'None',
+      userId: '1'
     }]);
   });
 
