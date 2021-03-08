@@ -305,6 +305,52 @@ describe('GISAENGCHUNG-BE routes', () => {
     });
   });
 
+
+  it('/PUT project', async() => {
+    const agent = request.agent(app);
+
+    await agent
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'sydney@richard.kT',
+        password: 'password',
+      });
+
+    const res = await request(app)
+      .put('/api/v1/project')
+      .send({
+        projectTitle: 'Richards Finger Hair',
+        projectSubtitle: 'Smell',
+        projectDescription: 'This is about Richards fingers',
+        projectGenre: 'Romance',
+        projectLocState: 'OR',
+        projectLocCity: 'Talent',
+        projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
+        projectFundingGoal: '$200',
+        projectFundingExDate: '3/31/2021',
+        projectRiskChallenge: 'The smell',
+        projectDiversity: 'None',
+        userId: '1',
+        projectId: '1'
+      });
+
+    expect(res.body).toEqual({
+      projectTitle: 'Richards Finger Hair',
+      projectSubtitle: 'Smell',
+      projectDescription: 'This is about Richards fingers',
+      projectGenre: 'Romance',
+      projectLocState: 'OR',
+      projectLocCity: 'Talent',
+      projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
+      projectFundingGoal: '$200',
+      projectFundingExDate: '3/31/2021',
+      projectRiskChallenge: 'The smell',
+      projectDiversity: 'None',
+      userId: '1',
+      projectId: '1'
+    });
+  });
+
   it('/GET all projects', async() => {
     const agent = request.agent(app);
 
