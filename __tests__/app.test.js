@@ -432,7 +432,7 @@ describe('GISAENGCHUNG-BE routes', () => {
     });
   });
 
-  it('/Get donation info', async() => {
+  it('/GET donation info', async() => {
     const agent = request.agent(app);
 
     await agent
