@@ -9,6 +9,7 @@ CREATE TABLE projects (
   state TEXT, 
   city TEXT, 
   image_url TEXT, 
+  donations TEXT,
   funding_goal TEXT, 
   funding_ex_date TEXT, 
   risk_challenge TEXT,
