@@ -41,7 +41,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocState: 'OR',
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-      projectFundingGoal: '$100',
+      projectFundingGoal: '100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
@@ -281,7 +281,7 @@ describe('GISAENGCHUNG-BE routes', () => {
         projectLocState: 'OR',
         projectLocCity: 'Talent',
         projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-        projectFundingGoal: '$100',
+        projectFundingGoal: '100',
         projectFundingExDate: '3/31/2021',
         projectRiskChallenge: 'The smell',
         projectDiversity: 'None',
@@ -297,7 +297,8 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocState: 'OR',
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-      projectFundingGoal: '$100',
+      projectDonations: '0',
+      projectFundingGoal: '100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
@@ -326,7 +327,7 @@ describe('GISAENGCHUNG-BE routes', () => {
         projectLocState: 'OR',
         projectLocCity: 'Talent',
         projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-        projectFundingGoal: '$200',
+        projectFundingGoal: '200',
         projectFundingExDate: '3/31/2021',
         projectRiskChallenge: 'The smell',
         projectDiversity: 'None',
@@ -342,7 +343,8 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocState: 'OR',
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-      projectFundingGoal: '$200',
+      projectDonations: '0',
+      projectFundingGoal: '200',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
@@ -362,7 +364,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocState: 'OR',
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-      projectFundingGoal: '$100',
+      projectFundingGoal: '100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
@@ -380,7 +382,8 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocState: 'OR',
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-      projectFundingGoal: '$100',
+      projectDonations: '0',
+      projectFundingGoal: '100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
@@ -395,12 +398,59 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocState: 'OR',
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
-      projectFundingGoal: '$100',
+      projectDonations: '0',
+      projectFundingGoal: '100',
       projectFundingExDate: '3/31/2021',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
       userId: '1'
     }]);
+  });
+
+  it('/PUT donation increment', async() => {
+    const agent = request.agent(app);
+
+    await agent
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'sydney@richard.kT',
+        password: 'password',
+      });
+
+    const res = await request(app)
+      .put('/api/v1/project/donate')
+      .send({
+        increment: '5',
+        projectId: '1'
+      });
+
+    expect(res.body).toEqual({
+      projectId: '1',
+      projectDonations: '5',
+      projectFundingGoal: '100',
+      projectFundingExDate: '3/31/2021',
+    });
+  });
+
+  it('/Get donation info', async() => {
+    const agent = request.agent(app);
+
+    await agent
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'sydney@richard.kT',
+        password: 'password',
+      });
+
+    const res = await request(app)
+      .get('/api/v1/project/donate/1');
+
+    expect(res.body).toEqual({
+      projectId: '1',
+      projectDonations: '0',
+      projectFundingGoal: '100',
+      projectFundingExDate: '3/31/2021',
+    });
   });
 
 });
