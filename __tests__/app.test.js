@@ -42,7 +42,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
       projectFundingGoal: '100',
-      projectFundingExDate: '3/31/2021',
+      projectFundingExDate: '2021-03-31',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
       userId: '1'
@@ -282,7 +282,7 @@ describe('GISAENGCHUNG-BE routes', () => {
         projectLocCity: 'Talent',
         projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
         projectFundingGoal: '100',
-        projectFundingExDate: '3/31/2021',
+        projectFundingExDate: '2021-03-31',
         projectRiskChallenge: 'The smell',
         projectDiversity: 'None',
         userId: '1'
@@ -299,7 +299,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
       projectDonations: '0',
       projectFundingGoal: '100',
-      projectFundingExDate: '3/31/2021',
+      projectFundingExDate: '2021-03-31',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
       userId: '1'
@@ -328,7 +328,7 @@ describe('GISAENGCHUNG-BE routes', () => {
         projectLocCity: 'Talent',
         projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
         projectFundingGoal: '200',
-        projectFundingExDate: '3/31/2021',
+        projectFundingExDate: '2021-03-31',
         projectRiskChallenge: 'The smell',
         projectDiversity: 'None',
         userId: '1',
@@ -345,7 +345,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
       projectDonations: '0',
       projectFundingGoal: '200',
-      projectFundingExDate: '3/31/2021',
+      projectFundingExDate: '2021-03-31',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
       userId: '1',
@@ -365,7 +365,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectLocCity: 'Talent',
       projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
       projectFundingGoal: '100',
-      projectFundingExDate: '3/31/2021',
+      projectFundingExDate: '2021-03-31',
       projectRiskChallenge: 'The smell',
       projectDiversity: 'None',
       userId: '1'
@@ -385,7 +385,7 @@ describe('GISAENGCHUNG-BE routes', () => {
         projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
         projectDonations: '0',
         projectFundingGoal: '100',
-        projectFundingExDate: '3/31/2021',
+        projectFundingExDate: '2021-03-31',
         projectRiskChallenge: 'The smell',
         projectDiversity: 'None',
         userId: '1'
@@ -401,7 +401,7 @@ describe('GISAENGCHUNG-BE routes', () => {
         projectMainImage: 'https://www.dictionary.com/e/wp-content/uploads/2019/02/foot-emoji-3-300x191.png',
         projectDonations: '0',
         projectFundingGoal: '100',
-        projectFundingExDate: '3/31/2021',
+        projectFundingExDate: '2021-03-31',
         projectRiskChallenge: 'The smell',
         projectDiversity: 'None',
         userId: '1'
@@ -429,7 +429,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectId: '1',
       projectDonations: '5',
       projectFundingGoal: '100',
-      projectFundingExDate: '3/31/2021',
+      projectFundingExDate: '2021-03-31',
     });
   });
 
@@ -450,7 +450,7 @@ describe('GISAENGCHUNG-BE routes', () => {
       projectId: '1',
       projectDonations: '0',
       projectFundingGoal: '100',
-      projectFundingExDate: '3/31/2021',
+      projectFundingExDate: '03/31/2021',
     });
   });
 
